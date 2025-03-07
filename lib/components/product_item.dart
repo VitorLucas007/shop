@@ -15,17 +15,20 @@ class ProductItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
         footer: GridTileBar(
-          title: Text(product.name, textAlign: TextAlign.center),
           backgroundColor: Colors.black87,
-          leading: IconButton(
-            onPressed: () {
-              product.toggleFavorite();
-            },
-            icon: Icon(
-              product.isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: Theme.of(context).colorScheme.secondary,
-            ),
+          leading: Consumer<Product>(
+            builder:
+                (ctx, product, _) => IconButton(
+                  onPressed: () {
+                    product.toggleFavorite();
+                  },
+                  icon: Icon(
+                    product.isFavorite ? Icons.favorite : Icons.favorite_border,
+                  ),
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
           ),
+          title: Text(product.name, textAlign: TextAlign.center),
           trailing: IconButton(
             onPressed: () {
               cart.addItem(product);
@@ -41,7 +44,7 @@ class ProductItem extends StatelessWidget {
           onTap: () {
             Navigator.of(
               context,
-            ).pushNamed(AppRoutes.product_detail, arguments: product);
+            ).pushNamed(AppRoutes.productDetail, arguments: product);
           },
         ),
       ),

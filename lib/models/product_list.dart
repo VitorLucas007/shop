@@ -3,7 +3,7 @@ import 'package:shop/data/dummy_data.dart';
 import 'package:shop/models/product.dart';
 
 class ProductList with ChangeNotifier {
-  List<Product> _items = dummyPorducts;
+  final List<Product> _items = dummyPorducts;
 
   List<Product> get items => [..._items];
   List<Product> get favoriteItems =>
@@ -14,7 +14,6 @@ class ProductList with ChangeNotifier {
     notifyListeners();
   }
 }
-
 
 
   // Metodo diferene para trabalhar com a gerencia de estados global da aplicação
